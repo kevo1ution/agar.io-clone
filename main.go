@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/kevo1ution/agar.io-clone/config"
+	"github.com/kevo1ution/agar.io-clone/controller"
 )
 
 func main() {
@@ -25,6 +26,9 @@ func main() {
 			v.OnCollide(game.Player{})
 		}
 	*/
+
+	//setup controllers
+	controller.SetupControllers()
 
 	//start loops
 	var wg sync.WaitGroup
