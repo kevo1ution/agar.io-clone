@@ -1,4 +1,4 @@
-var io = require('socket.io-client');
+var io = require('../node_modules/socket.io-client');
 var ChatClient = require('./chat-client');
 var Canvas = require('./canvas');
 var global = require('./global');
@@ -27,7 +27,8 @@ function startGame(type) {
     document.getElementById('startMenuWrapper').style.maxHeight = '0px';
     document.getElementById('gameAreaWrapper').style.opacity = 1;
     if (!socket) {
-        socket = io({query:"type=" + type});
+        socket = io("localhost:8000",{query:"type=" + type});
+        console.log(socket)
         setupSocket(socket);
     }
     if (!global.animLoopHandle)

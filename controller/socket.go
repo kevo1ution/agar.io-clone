@@ -44,6 +44,6 @@ func SetupSockets() {
 	SetupControllers()
 
 	http.Handle("/socket.io/", server)
-	log.Println("Serving socketio at localhost:8001...")
-	log.Fatal(http.ListenAndServe(":8001", nil))
+	log.Println("Serving socketio at localhost:8000...")
+	log.Fatal(http.ListenAndServe(":8000", nil))
 }

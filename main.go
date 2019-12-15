@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"sync"
 	"time"
 
@@ -61,16 +60,13 @@ func timedLoop(wg *sync.WaitGroup, fn func() bool, interval time.Duration) {
 
 // every one seconds
 func gameLoop() bool {
-	fmt.Println("gameLoop")
 	return false
 }
 
 func moveLoop() bool {
-	fmt.Println("moveLoop")
 	return false
 }
 
 func sendUpdates() bool {
-	fmt.Println("sendUpdates")
 	return false
 }
