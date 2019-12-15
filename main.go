@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"sync"
 	"time"
 
@@ -28,13 +29,20 @@ func main() {
 	*/
 
 	//setup controllers
-	controller.SetupControllers()
+	// go func() {
+	// 	controller.SetupControllers()
+	// }()
+
+	//initiatlize socket communication channels
+	go func() {
+		controller.SetupSockets()
+	}()
 
 	//start loops
 	var wg sync.WaitGroup
-	timedLoop(&wg, gameLoop, 100*time.Millisecond)
-	timedLoop(&wg, moveLoop, 100*time.Millisecond)
-	timedLoop(&wg, sendUpdates, 100*time.Millisecond)
+	timedLoop(&wg, gameLoop, 10000*time.Millisecond)
+	timedLoop(&wg, moveLoop, 10000*time.Millisecond)
+	timedLoop(&wg, sendUpdates, 10000*time.Millisecond)
 	wg.Wait()
 }
 
@@ -53,16 +61,16 @@ func timedLoop(wg *sync.WaitGroup, fn func() bool, interval time.Duration) {
 
 // every one seconds
 func gameLoop() bool {
-
+	fmt.Println("gameLoop")
 	return false
 }
 
 func moveLoop() bool {
-
+	fmt.Println("moveLoop")
 	return false
 }
 
 func sendUpdates() bool {
-
+	fmt.Println("sendUpdates")
 	return false
 }
